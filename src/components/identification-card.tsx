@@ -97,7 +97,7 @@ export function IdentificationCard({ product }: { product: Product }) {
                   <span className="text-xs font-black text-gray-400 uppercase tracking-[0.4em]">Face A / Obverse</span>
                   <div className="h-[2px] w-8 bg-gray-200" />
                 </div>
-                <div className="scale-[0.85] sm:scale-100 transition-transform origin-top print:scale-100">
+                <div className="scale-[0.85] sm:scale-100 transition-transform origin-top print:scale-100 print-front-scale">
                   {cardFront}
                 </div>
               </div>
@@ -109,7 +109,7 @@ export function IdentificationCard({ product }: { product: Product }) {
                   <span className="text-xs font-black text-gray-400 uppercase tracking-[0.4em]">Face B / Reverse</span>
                   <div className="h-[2px] w-8 bg-gray-200" />
                 </div>
-                <div className="scale-[0.85] sm:scale-100 transition-transform origin-top print:scale-100">
+                <div className="scale-[0.85] sm:scale-100 transition-transform origin-top print:scale-100 print-back-scale">
                   {cardBack}
                 </div>
               </div>
@@ -137,7 +137,14 @@ export function IdentificationCard({ product }: { product: Product }) {
         @media print {
           @page {
             size: A4;
-            margin: 6mm;
+            margin: 4mm;
+          }
+
+          html,
+          body {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
           }
 
           body * {
@@ -156,9 +163,12 @@ export function IdentificationCard({ product }: { product: Product }) {
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            gap: 4mm;
+            gap: 2mm;
             padding: 0;
             background: #fff;
+            overflow: hidden !important;
+            page-break-after: avoid !important;
+            break-after: avoid-page !important;
           }
 
           .print-area > * {
@@ -168,12 +178,20 @@ export function IdentificationCard({ product }: { product: Product }) {
 
           .print-card-wrap {
             margin: 0 !important;
+            padding: 0 !important;
+            line-height: 0 !important;
           }
 
-          .print-card-wrap > .scale-\[0\.85\],
-          .print-card-wrap > .sm\:scale-100 {
-            transform: scale(0.72) !important;
+          .print-front-scale {
+            transform: scale(0.62) !important;
             transform-origin: top center !important;
+            height: 163px !important;
+          }
+
+          .print-back-scale {
+            transform: scale(0.62) !important;
+            transform-origin: top center !important;
+            height: 174px !important;
           }
 
           .card-surface {
