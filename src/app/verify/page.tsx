@@ -26,20 +26,20 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#e7e7e7] py-3 px-3 md:py-8 md:px-6 flex justify-center">
-      <div className="w-full max-w-4xl bg-[#efefef] border border-[#555] p-3 md:p-5">
-        <div className="flex items-center justify-center gap-2 pt-2 pb-4 border-b border-[#888]">
+    <div className="h-screen bg-[#e7e7e7] p-2 md:p-4 flex justify-center overflow-hidden">
+      <div className="w-full max-w-4xl h-full max-h-full bg-[#efefef] border border-[#555] p-2 md:p-3 flex flex-col overflow-hidden">
+        <div className="flex items-center justify-center gap-2 pt-1 pb-2 border-b border-[#888]">
           <Diamond className="h-5 w-5 sm:h-7 sm:w-7 text-[#111]" />
-          <h1 className="text-[clamp(16px,3.2vw,40px)] leading-none font-black tracking-[0.02em] text-[#111] text-center">GEM IDENTIFICATION REPORT</h1>
+          <h1 className="text-[clamp(16px,2.2vw,32px)] leading-none font-black tracking-[0.02em] text-[#111] text-center">GEM IDENTIFICATION REPORT</h1>
         </div>
 
-        <div className="mt-3 bg-[#0f1418] text-white text-center font-extrabold text-[clamp(14px,2.1vw,22px)] leading-[1.35] py-3 px-3 md:py-4">
+        <div className="mt-2 bg-[#0f1418] text-white text-center font-extrabold text-[clamp(13px,1.6vw,18px)] leading-[1.3] py-2 px-2">
           The Certificate No. You Entered Is {certId}.<br />
           The Query Result Is As Follows:
         </div>
 
-        <div className="border-x border-b border-[#666] bg-white">
-          <div className="h-[190px] sm:h-[240px] md:h-[300px] relative bg-[#f7f7f7]">
+        <div className="border-x border-b border-[#666] bg-white mt-2 flex-1 min-h-0 flex flex-col overflow-hidden">
+          <div className="h-[140px] sm:h-[180px] md:h-[220px] relative bg-[#f7f7f7] shrink-0">
             {product?.Product_Image_URL ? (
               <Image src={product.Product_Image_URL} alt="Product" fill className="object-contain p-3" />
             ) : (
@@ -52,10 +52,10 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
               {rows.map((row) => (
                 <tr key={row.label} className="border-t border-[#666]">
                   <td className="w-[46%] border-r border-[#666] text-center px-2 py-2">
-                    <div className="text-[clamp(14px,1.9vw,26px)] leading-[1.05] font-extrabold whitespace-pre-line text-[#111]">{row.label}</div>
+                    <div className="text-[clamp(12px,1.2vw,20px)] leading-[1.05] font-extrabold whitespace-pre-line text-[#111]">{row.label}</div>
                   </td>
                   <td className="w-[54%] text-center px-2 py-2">
-                    <div className="text-[clamp(16px,2.4vw,38px)] leading-[1.05] font-semibold text-[#111] break-words">{row.value}</div>
+                    <div className="text-[clamp(13px,1.4vw,24px)] leading-[1.05] font-semibold text-[#111] break-words">{row.value}</div>
                   </td>
                 </tr>
               ))}
@@ -63,7 +63,7 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
           </table>
         </div>
 
-        <div className="text-center mt-3 text-[clamp(18px,2.6vw,44px)] leading-none font-black tracking-tight text-[#111]">
+        <div className="text-center mt-2 text-[clamp(14px,1.8vw,28px)] leading-none font-black tracking-tight text-[#111]">
           Inspection basis Cert.No. {product?.Certificate_ID || "N/A"}
         </div>
       </div>
