@@ -26,8 +26,8 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
   ];
 
   return (
-    <div className="h-screen bg-[#e7e7e7] p-2 md:p-4 flex justify-center overflow-hidden">
-      <div className="w-full max-w-4xl h-full max-h-full bg-[#efefef] border border-[#555] p-2 md:p-3 flex flex-col overflow-hidden">
+    <div className="min-h-screen md:h-screen bg-[#e7e7e7] p-2 md:p-4 flex justify-center overflow-y-auto md:overflow-hidden">
+      <div className="w-full max-w-4xl min-h-[calc(100vh-1rem)] md:h-full bg-[#efefef] border border-[#555] p-2 md:p-3 flex flex-col overflow-visible md:overflow-hidden">
         <div className="flex items-center justify-center gap-2 pt-1 pb-2 border-b border-[#888]">
           <Diamond className="h-5 w-5 sm:h-7 sm:w-7 text-[#111]" />
           <h1 className="text-[clamp(16px,2.2vw,32px)] leading-none font-black tracking-[0.02em] text-[#111] text-center">GEM IDENTIFICATION REPORT</h1>
@@ -38,7 +38,7 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
           The Query Result Is As Follows:
         </div>
 
-        <div className="border-x border-b border-[#666] bg-white mt-2 flex-1 min-h-0 flex flex-col overflow-hidden">
+        <div className="border-x border-b border-[#666] bg-white mt-2 md:flex-1 min-h-0 flex flex-col overflow-visible md:overflow-hidden">
           <div className="h-[140px] sm:h-[180px] md:h-[220px] relative bg-[#f7f7f7] shrink-0">
             {product?.Product_Image_URL ? (
               <Image src={product.Product_Image_URL} alt="Product" fill className="object-contain p-3" />
