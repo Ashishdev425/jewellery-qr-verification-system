@@ -12,7 +12,8 @@ export function IdentificationCard({ product }: { product: Product }) {
   const backRef = useRef<HTMLDivElement>(null);
   const publicBaseUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
   const runtimeBaseUrl = typeof window !== "undefined" ? window.location.origin : "";
-  const baseUrl = publicBaseUrl || runtimeBaseUrl;
+  // Prefer runtime origin so QR always points to the currently opened deployment.
+  const baseUrl = runtimeBaseUrl || publicBaseUrl;
   const verificationUrl = `${baseUrl}/verify?cert_id=${encodeURIComponent(String(product.Certificate_ID || ""))}`;
 
   const cardFront = (
@@ -46,8 +47,8 @@ export function IdentificationCard({ product }: { product: Product }) {
           {product.Setting_Type || "N/A"}
         </p>
       </div>
-      <div className="absolute left-[364px] top-[122px] z-10 w-[58px] h-[58px] flex items-center justify-center bg-white p-[4px]">
-        <QRCodeSVG value={verificationUrl} size={50} level="M" includeMargin={false} fgColor="#111111" bgColor="#ffffff" />
+      <div className="absolute left-[358px] top-[116px] z-10 w-[66px] h-[66px] flex items-center justify-center bg-white p-[3px]">
+        <QRCodeSVG value={verificationUrl} size={60} level="H" includeMargin={true} fgColor="#111111" bgColor="#ffffff" />
       </div>
     </div>
   );
