@@ -26,20 +26,20 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
   ];
 
   return (
-    <div className="min-h-[100dvh] bg-[#e7e7e7] p-1.5 md:p-4 flex justify-center items-start overflow-y-auto">
-      <div className="w-full max-w-[620px] md:max-w-[980px] bg-[#efefef] border border-[#4f4f4f] p-3 md:p-6">
+    <div className="min-h-[100dvh] md:h-[100dvh] bg-[#e7e7e7] p-1.5 md:p-3 flex justify-center items-start md:items-center overflow-y-auto md:overflow-hidden">
+      <div className="w-full max-w-[620px] md:max-w-[980px] md:h-[calc(100dvh-1.5rem)] bg-[#efefef] border border-[#4f4f4f] p-3 md:p-4 md:flex md:flex-col md:overflow-hidden">
         <div className="flex items-center justify-center gap-2 pb-2 border-b border-[#777]">
           <Diamond className="h-5 w-5 text-[#111]" />
-          <h1 className="text-[clamp(20px,4.4vw,46px)] md:text-[44px] leading-none font-black tracking-[0.01em] text-[#111] text-center">GEM IDENTIFICATION REPORT</h1>
+          <h1 className="text-[clamp(20px,4.4vw,46px)] md:text-[36px] leading-none font-black tracking-[0.01em] text-[#111] text-center">GEM IDENTIFICATION REPORT</h1>
         </div>
 
-        <div className="mt-3 bg-[#0f1418] text-white text-center font-extrabold text-[clamp(14px,4.4vw,42px)] md:text-[34px] leading-[1.28] py-2.5 md:py-4 px-2 md:px-4">
+        <div className="mt-3 bg-[#0f1418] text-white text-center font-extrabold text-[clamp(14px,4.4vw,42px)] md:text-[27px] leading-[1.28] py-2.5 md:py-3 px-2 md:px-4">
           The Certificate No. You Entered Is {certId}.<br />
           The Query Result Is As Follows:
         </div>
 
-        <div className="border-x border-b border-[#666] bg-white mt-3">
-          <div className="h-[210px] sm:h-[250px] md:h-[380px] relative bg-[#f7f7f7]">
+        <div className="border-x border-b border-[#666] bg-white mt-3 md:flex-1 md:min-h-0 md:flex md:flex-col md:overflow-hidden">
+          <div className="h-[210px] sm:h-[250px] md:h-[290px] relative bg-[#f7f7f7] md:shrink-0">
             {product?.Product_Image_URL ? (
               <Image src={product.Product_Image_URL} alt="Product" fill className="object-contain p-2" />
             ) : (
@@ -47,15 +47,15 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
             )}
           </div>
 
-          <table className="w-full border-collapse table-fixed">
+          <table className="w-full border-collapse table-fixed md:h-full">
             <tbody>
               {rows.map((row) => (
                 <tr key={row.label} className="border-t border-[#666]">
                   <td className="w-[46%] border-r border-[#666] text-center px-2 md:px-4 py-2.5 md:py-4">
-                    <div className="text-[clamp(16px,3.8vw,35px)] md:text-[30px] leading-[1.02] font-extrabold whitespace-pre-line text-[#111]">{row.label}</div>
+                    <div className="text-[clamp(16px,3.8vw,35px)] md:text-[25px] leading-[1.02] font-extrabold whitespace-pre-line text-[#111]">{row.label}</div>
                   </td>
                   <td className="w-[54%] text-center px-2 md:px-4 py-2.5 md:py-4">
-                    <div className="text-[clamp(16px,4.4vw,40px)] md:text-[34px] leading-[1.05] font-semibold text-[#111] break-words">{row.value}</div>
+                    <div className="text-[clamp(16px,4.4vw,40px)] md:text-[28px] leading-[1.05] font-semibold text-[#111] break-words">{row.value}</div>
                   </td>
                 </tr>
               ))}
@@ -63,7 +63,7 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
           </table>
         </div>
 
-        <div className="text-center mt-2 md:mt-3 text-[clamp(15px,4.2vw,34px)] md:text-[36px] leading-none font-black tracking-tight text-[#111]">
+        <div className="text-center mt-2 md:mt-2 text-[clamp(15px,4.2vw,34px)] md:text-[30px] leading-none font-black tracking-tight text-[#111]">
           Inspection basis Cert.No. {product?.Certificate_ID || "N/A"}
         </div>
       </div>
