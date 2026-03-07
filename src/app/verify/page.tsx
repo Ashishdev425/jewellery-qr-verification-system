@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Diamond } from "lucide-react";
 import { getProductAction } from "@/lib/actions";
+import { Spinner } from "@/components/ui/spinner";
 
 function ReportView({ certId, product }: { certId: string; product: any }) {
   const code = useMemo(() => {
@@ -102,7 +103,14 @@ function VerificationContent() {
   }, [certIdParam]);
 
   if (loading) {
-    return <div className="min-h-screen bg-[#e7e7e7]" />;
+    return (
+      <div className="min-h-screen bg-[#e7e7e7] flex items-center justify-center px-4">
+        <div className="bg-white border border-[#bdbdbd] rounded-lg px-6 py-5 flex items-center gap-3 shadow-sm">
+          <Spinner className="size-5 text-[#111]" />
+          <div className="text-[#111] font-semibold">Verifying certificate, please wait...</div>
+        </div>
+      </div>
+    );
   }
 
   if (!product) {
@@ -127,7 +135,16 @@ function VerificationContent() {
 
 export default function VerifyPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#e7e7e7]" />}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#e7e7e7] flex items-center justify-center px-4">
+          <div className="bg-white border border-[#bdbdbd] rounded-lg px-6 py-5 flex items-center gap-3 shadow-sm">
+            <Spinner className="size-5 text-[#111]" />
+            <div className="text-[#111] font-semibold">Loading verification page...</div>
+          </div>
+        </div>
+      }
+    >
       <VerificationContent />
     </Suspense>
   );
