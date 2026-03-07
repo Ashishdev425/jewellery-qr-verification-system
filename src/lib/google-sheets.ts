@@ -43,20 +43,28 @@ export const googleSheets = {
   async getProduct(id: string): Promise<Product | null> {
     if (!SCRIPT_URL || SCRIPT_URL.includes('REPLACE_WITH_YOUR_DEPLOYED_URL')) return null;
     
-    try {
-      const response = await fetch(`${SCRIPT_URL}?action=getProduct&id=${id}`);
-      if (!response.ok) return null;
-      const data = await response.json();
-      if (!data.error) return data;
+    const wanted = String(id ?? "").trim();
+    if (!wanted) return null;
 
-      // Fallback: when sheet stores Certificate_ID as number, strict script match can fail.
+    try {
+      const response = await fetch(`${SCRIPT_URL}?action=getProduct&id=${encodeURIComponent(wanted)}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (!data.error) return data;
+      }
+
+      // Fallback: strict Apps Script match can fail due type/casing/format differences.
       const all = await googleSheets.getProducts();
-      const wanted = String(id ?? "").trim();
-      return (
-        all.find((p) => String(p.Certificate_ID ?? "").trim() === wanted) ??
-        all.find((p) => String(p.Certificate_ID ?? "").replace(/\D/g, "") === wanted.replace(/\D/g, "")) ??
-        null
-      );
+      const wantedDigits = wanted.replace(/\D/g, "");
+      const wantedLower = wanted.toLowerCase();
+      return all.find((p) => {
+        const cert = String(p.Certificate_ID ?? "").trim();
+        if (!cert) return false;
+        if (cert === wanted) return true;
+        if (cert.toLowerCase() === wantedLower) return true;
+        const certDigits = cert.replace(/\D/g, "");
+        return Boolean(wantedDigits && certDigits && certDigits === wantedDigits);
+      }) ?? null;
     } catch (error) {
       console.error('Error in getProduct:', error);
       return null;

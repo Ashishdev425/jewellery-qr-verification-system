@@ -72,19 +72,24 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
 
 function VerificationContent() {
   const searchParams = useSearchParams();
-  const certId = searchParams.get("cert_id") || "N/A";
+  const certIdParam =
+    searchParams.get("cert_id") ||
+    searchParams.get("certificate_id") ||
+    searchParams.get("id") ||
+    "";
+  const certId = certIdParam || "N/A";
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const run = async () => {
-      if (!searchParams.get("cert_id")) {
+      if (!certIdParam) {
         setLoading(false);
         return;
       }
 
       try {
-        const data = await getProductAction(searchParams.get("cert_id") as string);
+        const data = await getProductAction(certIdParam);
         setProduct(data || null);
       } catch {
         setProduct(null);
@@ -94,7 +99,7 @@ function VerificationContent() {
     };
 
     run();
-  }, [searchParams]);
+  }, [certIdParam]);
 
   if (loading) {
     return <div className="min-h-screen bg-[#e7e7e7]" />;
