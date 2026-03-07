@@ -149,13 +149,11 @@ export function IdentificationCard({ product }: { product: Product }) {
           }
 
           body * {
-            display: none !important;
             visibility: hidden !important;
           }
 
           .print-area,
           .print-area * {
-            display: revert !important;
             visibility: visible !important;
           }
 
