@@ -145,14 +145,17 @@ export function IdentificationCard({ product }: { product: Product }) {
             margin: 0 !important;
             padding: 0 !important;
             overflow: hidden !important;
+            height: auto !important;
           }
 
           body * {
+            display: none !important;
             visibility: hidden !important;
           }
 
           .print-area,
           .print-area * {
+            display: revert !important;
             visibility: visible !important;
           }
 
