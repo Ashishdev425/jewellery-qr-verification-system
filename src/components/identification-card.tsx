@@ -87,9 +87,9 @@ export function IdentificationCard({ product }: { product: Product }) {
           </div>
         </div>
         
-        <div className="p-4 lg:p-12 bg-[#fafafa] print:p-0">
+        <div className="p-2 sm:p-4 lg:p-12 bg-[#fafafa] print:p-0">
           <div className="pb-8 custom-scrollbar">
-            <div className="print-area flex flex-col gap-12 items-center justify-center w-full mx-auto px-4 py-4 print:gap-6 print:px-0 print:py-0">
+            <div className="print-area flex flex-col gap-12 items-center justify-center w-full mx-auto px-1 sm:px-4 py-4 print:gap-6 print:px-0 print:py-0">
               {/* Front with Label */}
               <div className="space-y-6 print-card-wrap">
                 <div className="flex items-center justify-center gap-3 print:hidden">
@@ -97,7 +97,7 @@ export function IdentificationCard({ product }: { product: Product }) {
                   <span className="text-xs font-black text-gray-400 uppercase tracking-[0.4em]">Face A / Obverse</span>
                   <div className="h-[2px] w-8 bg-gray-200" />
                 </div>
-                <div className="scale-[0.85] sm:scale-100 transition-transform origin-top print:scale-100 print-front-scale">
+                <div className="scale-[0.7] sm:scale-100 transition-transform origin-top print:scale-100 print-front-scale">
                   {cardFront}
                 </div>
               </div>
@@ -109,7 +109,7 @@ export function IdentificationCard({ product }: { product: Product }) {
                   <span className="text-xs font-black text-gray-400 uppercase tracking-[0.4em]">Face B / Reverse</span>
                   <div className="h-[2px] w-8 bg-gray-200" />
                 </div>
-                <div className="scale-[0.85] sm:scale-100 transition-transform origin-top print:scale-100 print-back-scale">
+                <div className="scale-[0.7] sm:scale-100 transition-transform origin-top print:scale-100 print-back-scale">
                   {cardBack}
                 </div>
               </div>
