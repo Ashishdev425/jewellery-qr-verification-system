@@ -84,7 +84,7 @@ export default function ProductDetails({ params }: { params: Promise<{ id: strin
           <Card className="border-none shadow-sm overflow-hidden">
             <div className="aspect-square relative bg-gray-50">
               {product.Product_Image_URL ? (
-                <Image src={product.Product_Image_URL} alt="" fill unoptimized className="object-cover" />
+                <Image src={product.Product_Image_URL} alt="" fill className="object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-200">
                   <Diamond className="h-20 w-20" />
