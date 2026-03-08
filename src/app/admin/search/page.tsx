@@ -86,7 +86,7 @@ export default function SearchProduct() {
             <div className="flex flex-col md:flex-row gap-6 items-start">
               <div className="h-40 w-40 rounded-xl border border-gray-200 overflow-hidden bg-gray-50 relative shrink-0">
                 {result.Product_Image_URL ? (
-                  <Image src={result.Product_Image_URL} alt="Product" fill className="object-cover" />
+                  <Image src={result.Product_Image_URL} alt="Product" fill unoptimized className="object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-gray-300">
                     <Diamond className="h-10 w-10" />

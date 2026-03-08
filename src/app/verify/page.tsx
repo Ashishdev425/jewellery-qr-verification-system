@@ -41,7 +41,7 @@ function ReportView({ certId, product }: { certId: string; product: any }) {
         <div className="border-x border-b border-[#666] bg-white mt-3 md:mt-2 md:flex-1 md:min-h-0 md:flex md:flex-col md:overflow-hidden">
           <div className="h-[210px] sm:h-[250px] md:h-[180px] lg:h-[200px] relative bg-[#f7f7f7] md:shrink-0">
             {product?.Product_Image_URL ? (
-              <Image src={product.Product_Image_URL} alt="Product" fill className="object-contain p-2" />
+              <Image src={product.Product_Image_URL} alt="Product" fill unoptimized className="object-contain p-2" />
             ) : (
               <div className="h-full w-full flex items-center justify-center text-gray-400">No Image</div>
             )}

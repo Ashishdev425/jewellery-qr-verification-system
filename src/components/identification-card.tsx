@@ -33,7 +33,7 @@ export function IdentificationCard({ product }: { product: Product }) {
       </div>
       <div className="absolute left-[8.5%] top-[23.5%] z-10 w-[16.8%] h-[55.1%] overflow-hidden">
         {product.Product_Image_URL ? (
-          <Image src={product.Product_Image_URL} alt="Product" fill className="object-contain object-center" />
+          <Image src={product.Product_Image_URL} alt="Product" fill unoptimized className="object-contain object-center" />
         ) : null}
       </div>
       <div className="absolute left-[152px] top-[87px] z-10 w-[198px] px-2 py-1">

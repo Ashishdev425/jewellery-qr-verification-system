@@ -149,7 +149,7 @@ export default function AllProducts() {
                 <div className="flex items-center gap-5">
                   <div className="h-20 w-20 rounded-2xl border-2 border-white bg-gray-50 relative overflow-hidden shrink-0 shadow-md">
                     {product.Product_Image_URL ? (
-                      <Image src={product.Product_Image_URL} alt="" fill className="object-cover" />
+                      <Image src={product.Product_Image_URL} alt="" fill unoptimized className="object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center"><Diamond className="h-6 w-6 text-gray-200" /></div>
                     )}
@@ -237,7 +237,7 @@ export default function AllProducts() {
                       <div className="flex items-center gap-6">
                         <div className="h-20 w-20 rounded-[1.5rem] border-4 border-white bg-gray-50 relative overflow-hidden shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-500">
                           {product.Product_Image_URL ? (
-                            <Image src={product.Product_Image_URL} alt="" fill className="object-cover" />
+                            <Image src={product.Product_Image_URL} alt="" fill unoptimized className="object-cover" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center"><Diamond className="h-8 w-8 text-gray-200" /></div>
                           )}
